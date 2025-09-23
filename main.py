@@ -120,7 +120,8 @@ def webhook():
                 files=genai.list_files()
                 for file in files:
                     file.delete()
-        except :pass
+        except Exception as e:
+    		print("Webhook error:", e)
         return jsonify({"status": "ok"}), 200
 if __name__ == "__main__":
     app.run(debug=True, port=8000)
